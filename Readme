@@ -1,0 +1,28 @@
+Login Info:
+	userId
+	userName
+	loginTimes
+	lastLoginTime
+String: For login
+    Set login:#userId:userName   userName
+    Set login:#userId:password   password
+    Set login:#userId:loginTimes loginTimes
+    Set login:#userId:lastLoginTime lastLoginTime
+    Set login:#userName:userid userId
+    Set login:#userName:password password
+List: For get last N login users
+	Lpush login:lastLoginUser	userId
+	Ltrim login:lastLoginUser 0 N-1
+Set:  For get max login times
+    Zadd login:loginTimes loginTime UserId
+    zincrcby login:loginTimes 1 userId
+    zrevrange login:loginTimes 0 N-1
+
+Hash userid:1
+	userid:
+	username:
+	nickname:
+	password:
+	age:
+	sex:
+	

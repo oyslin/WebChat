@@ -1,0 +1,70 @@
+!!! 5
+html
+	head
+		title= title
+		link(rel="stylesheet", type="text/css", href="/styles/style.css")
+		script(type="text/javascript", src="/js/lib/jquery-1.7.min.js")
+		script(type="text/javascript", src="/js/webchat/register.js")
+	body.regbody
+		.regv1
+			.regtitle
+				.loginbar
+					a.logo(title="Go to Web Chat Home", href="/") Web Chat
+					.login_container
+						form(id="login_form", action="/login", method="post")
+							table
+								tr
+									td.label
+										label Username
+									td.label
+										label Password
+								tr
+									td
+										input.inputtext(type="text", name="username", id="username", tabindex=1)
+									td 
+										input.inputtext(type="password", name="password", id="password", tabindex=2)
+									td
+										input.submit(type="submit", value="Log In", id="loginsubmit", tabindex=4)
+								tr
+									td
+										input.label_checkbox(type="checkbox", name="persistent", value="1", id="persistent_checkbox", tabindex=3)
+										label(for="persistent_checkbox") Keep me logged in
+									td
+										a(href="/recover", rel="nofollow") Forgot your password?
+			.regcon
+				.regleft
+					form(id="register_form", action="/register", method="post")
+						.newitem
+							.title UserName:
+							.content
+								input.reginput(type="text", name="username", id="username")
+								span.need *
+						.newitem
+							.title Password:
+							.content
+								input.reginput(type="password", name="password", id="password")
+								span.need *
+						.newitem
+							.title Confirm Password:
+							.content
+								input.reginput(type="password", name="confirmpassword")
+								span.need *
+						.newitem
+							.title Nickname:
+							.content
+								input.reginput(type="text", name="nickname", id="nickname")
+								span.need *
+						.regbtn
+							//a.btnbig(href="/login", title="Submit") Submit
+							input(type="submit", value="Sign up", id="registersubmit")
+				.regright
+					p Latest new user
+					table
+						tr
+							th Username
+							th Join time
+						tr
+							td Walt Ouyang
+							td 2012.02.22
+			.regfooter
+			
