@@ -7,14 +7,15 @@ var express = require('express'),
 	RedisStore = require('connect-redis')(express),
 	register = require('./server/register'),
 	login = require('./server/login'),
-	io = require('socket.io').listen(app);
+	io = require('socket.io').listen(app),
+	sessionStore = new RedisStore;
 
 app.configure(function() {
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'jade');
 	app.set('view options', { layout: false});
 	app.use(express.cookieParser());
-	app.use(express.session({secret: "web chat", store: new RedisStore}));
+	app.use(express.session({secret: "web chat", store: sessionStore}));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);

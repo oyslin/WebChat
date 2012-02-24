@@ -6,6 +6,8 @@ html
 		script(type="text/javascript", src="/socket.io/socket.io.js")
 		script(type="text/javascript", src="/js/lib/jquery-1.7.min.js")
 		script(type="text/javascript", src="/js/webchat/chat.js")
+		script
+			var userinfo = '#{userinfo}';
 	body
 		.chattitle
 			.chatmenubar
@@ -16,6 +18,8 @@ html
 				textarea(row="4", scroll="auto")
 			.userlist
 				p User List
+				p #{userinfo.userid}
+				p #{userinfo.username}
+				p #{userinfo.nickname}
 		.chatfooter
-			.chatfootercon
-				
+			.chatfootercon		

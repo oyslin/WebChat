@@ -61,6 +61,12 @@ body{
 	border: none;
 }
 
+.chatcon .userlist .useritem{
+	line-height: 20px;
+	width: 100%;
+	color: red;
+}
+
 .chatfooter{
 	height: 60px;
 	background-color: #96A6C5;
