@@ -57,7 +57,7 @@ app.post('/login', function(req, res){
 	login.login(req, res, db);
 });
 
-app.post('/register', function(req, res){
+app.post('/register', function(req, res){	
 	register.register(req, res, db);
 })
 
