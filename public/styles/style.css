@@ -4,17 +4,6 @@ body {
 	margin: 0;
 }
 
-.regbody{
-	background-color: #D3D8E8;
-}
-
-.regv1{	
-	margin: 0 auto;
-	min-height: 600px;
-	clear: both;
-	position: relative;
-}
-
 .regtitle{
 	background-color: #3B5998;
 	height: 82px;
@@ -37,6 +26,7 @@ body {
 
 .regtitle .loginbar .login_container{
 	float: right;
+	width: 400px;	
 }
 
 .regtitle .loginbar .login_container table{
@@ -53,10 +43,17 @@ body {
 
 .regtitle .loginbar .login_container table tr td label{
 	color: white;
+	font-size: 11px;	
+}
+
+.regtitle .loginbar .login_container table tr td label.forcheckbox{
+	color: #98A9CA;
+	cursor: pointer;
 }
 
 .regtitle .loginbar .login_container table tr td a{
-	color: #999999;
+	color: #98A9CA;
+	font-size: 11px;
 }
 
 .regtitle .loginbar .login_container table tr td .inputtext{
@@ -65,12 +62,17 @@ body {
 	color: #999999;
 	border: 1px solid;
 	padding: 0 2px 0 2px;
-	line-height: 20px;
+	height: 22px;
+	margin-right: 5px;
 }
 
 .regtitle .loginbar .login_container table tr td .label_checkbox{
 	float: left;
 	color:#999999;
+}
+
+.regbody{
+	background-color: #D3D8E8;
 }
 
 .regcon{
@@ -82,74 +84,110 @@ body {
 }
 
 .regcon .regleft{
-	width: 590px;
-	float: left;
-	border-right: 1px solid #ECECEC;
+	width: 560px;
+	float: left;	
 	min-height: 400px;
 	position: relative;
 }
 
-.regleft .newitem{
+.regcon .regright{
+	float: left;
+	width: 400px;
+	padding-top: 20px;
+}
+
+.regright .signheader{
+	width: 380px;
+	border-bottom: solid 1px #9AAFCA;
+	color: #0E385F;
+	padding: 10px;
+}
+
+.regright .signheader .signtitle{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.regright .signheader .signsubtitle{
+	margin-top: 5px;
+	font-size: 15px;
+}
+
+.regright .registerform{
+	color: #0E385F;
+	padding-top: 10px;
+}
+
+.regright .newitem{
 	overflow: hidden;
 	zoom: 1;
 	clear: both;
 }
 
-.regleft .newitem .title{
+.regright .newitem .title{
 	font-size: 14px;
 	width: 120px;
 	line-height: 40px;
-	height: 50px;
+	height: 40px;
 	float: left;
 	text-align: right;
 }
 
-.regleft .newitem .content{
+.regright .newitem .content{
 	float: left;
 	padding-left: 10px;
 	display: inline;
-	width: 420px;
 	margin-right: 10px;
 }
 
-.regleft .newitem .content .reginput{
-	width: 400px;
-	color: #999999;
-	line-height: 30px;
+.regright .newitem .content .reginput{
+	width: 240px;
+	height: 30px;
 	border: 1px solid #96a6c5;
 	padding: 0 2px 0 2px;
 }
 
-.regleft .newitem .content .need{
+.regright .newitem .content .need{
 	color: red;
 	margin-left: 5px;
 }
 
-.regleft .regbtn{
-	padding: 10px 0 10px 150px;
+.regright .regbtn{
+	padding: 10px 0 10px 130px;
 }
 
-.regleft .regbtn a.btnbig{
+.regright .regbtn label{
+	width: 50px;
+	height: 30px;
+	background-color: #69A74E;
+	border: 1px solid #3B6E22;	
+	padding: 4px 10px;
+	cursor: pointer;
+}
+
+.regright .regbtn a.btnbig{
 	height: 50px;
 	width: 155px;
 	margin: 0 auto;
 }
 
-.regcon .regright{
-	float: left;
-	width: 170px;
-	padding-left: 20px;
-}
-
-.regfooter{
-	width: 780px;
-	background: url("../images/reg_footbg.gif") center bottom no-repeat;
-	color: #999;
-	overflow: hidden;
-}
-
 .footer{
 	position: relative;
 	margin: 0 auto;
-	width: 800px;	
+	background-color: white;
+	min-height: 40px;
+}
+
+.uiButton .uiButtonText,
+.uiButton input{
+	background: none;
+	border: 0;
+	cursor: pointer;
+	margin: 2px 6px;
+	white-space: nowrap;
+	padding: 2px 6px;
+	font-weight: bold;
+	color: white;
+	display: inline-block;
+	
 }
