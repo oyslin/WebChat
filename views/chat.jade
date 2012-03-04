@@ -6,6 +6,12 @@ html
 		script(type="text/javascript", src="/socket.io/socket.io.js")
 		script(type="text/javascript", src="/js/lib/jquery-1.7.min.js")		
 		script(type="text/javascript", src="/js/webchat/webchat.js")
+		script(type="text/javascript", src="/js/webchat/sockets/io.js")
+		script(type="text/javascript", src="/js/webchat/util/functions.js")
+		script(type="text/javascript")
+			jQuery(document).ready(function(){
+				webchat.initConnect();
+			});
 	body
 		.chattitle
 			.chatmenubar
@@ -13,7 +19,7 @@ html
 				.chatmenu
 					a(href="/logout")
 						span.menu Log out 
-					span.menu Preference
+					span.menu Preference					
 					span.menu Home
 		.chatcon
 			.msgcon
@@ -26,3 +32,4 @@ html
 				p #{userinfo.nickname}
 		.chatfooter
 			.chatfootercon
+		input(type="hidden", value='#{userinfo.username}', name="username")

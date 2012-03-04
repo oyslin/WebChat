@@ -9,6 +9,8 @@ var express = require('express'),
 	login = require('./server/login'),
 	sockets = require('./server/sockets'),
 	io = require('socket.io').listen(app),
+	HashMap = require('./server/HashMap'),
+	socketMap = new HashMap.HashMap,
 	sessionStore = new RedisStore;
 
 app.configure(function() {
@@ -59,7 +61,7 @@ app.post('/login', function(req, res){
 	login.login(req, res, redisDB);
 });
 
-app.post('/register', function(req, res){	
+app.post('/register', function(req, res){
 	register.register(req, res, redisDB);
 });
 
@@ -89,10 +91,19 @@ io.sockets.on('connection', function(socket){
 	socket.on('fetchBuddy', function(data){
 		
 	});	
+	
+	socket.on('disconnect', function(){
+		
+	})
 });
 
-io.of('chat').on('connection', function(socket){
+var chat =  io.of('/chat').on('connection', function(socket){
 	console.log('chat connected!');
+	socket.on('initConnect', function(data){
+		var username = data.username;
+		console.log('username = ' + username);
+		socketMap.put(username, socket);
+	});
 });
 
 

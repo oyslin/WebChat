@@ -5,24 +5,24 @@ webchat.sockets.io = {
 		mainHost : "http://192.168.1.101",
 		chatHost : "http://192.168.1.101/chat"
 	},
-	mainConnected : false,
-	chatConnected : false,
+	_mainConnected : false,
+	_chatConnected : false,
 	init : function(host){
 		if(host == 'main'){
-			if(!this.mainConnected){
+			if(!this._mainConnected){
 				this.socket = io.connect(this.config.mainHost);
 				this.socket.on('connect', function(){
 					console.log('Connected to server via Websocket.')
 				});
-				this.mainConnected = true;
+				this._mainConnected = true;
 			};
 		}else{
-			if(!chatConnected){
+			if(!this._chatConnected){
 				this.socket = io.connect(this.config.chatHost);
 				this.socket.on('connect', function(){
-					console.log('Connected to server via Websocket.')
+					console.log('Connected to server via Websocket.');					
 				});
-				this.chatConnected = true;
+				this._chatConnected = true;
 			}
 		}
 		
@@ -39,15 +39,15 @@ webchat.sockets.io = {
 		});
 		this.socket.emit('register', {username : username});		
 	},
-	login : function(/*String*/ username){
-		this.socket.on('login', function(data){
+	initConnect : function(/*String*/ username){
+		this.socket.on('initConnect', function(data){
 			if(data == null){
 				console.log('Server check error!');
 			}else{
 				
 			}
 		});
-		this.socket.emit('login', {username : username});
+		this.socket.emit('initConnect', {username : username});
 	},
 	sendMsg : function(/*String*/ from, /*String*/ to, /*String*/ msg){
 		this.socket.emit('sendMsg', {from : from, to : to, msg : msg});

@@ -21,5 +21,11 @@ var webchat = {
 		if(keepLogin != null && keepLogin != "" && keepLogin != 0){
 			$('#login_form :checkbox').attr('checked', true);
 		}
+	},
+	
+	initConnect : function(){
+		var username = $('input[name="username"]').val();
+		webchat.sockets.io.init('chat');
+		webchat.sockets.io.initConnect(username);
 	}
 }
