@@ -4,14 +4,17 @@ html
 		title Welcom to Web Chat
 		link(rel="stylesheet", href="/styles/chat.css", type="text/css")
 		script(type="text/javascript", src="/socket.io/socket.io.js")
-		script(type="text/javascript", src="/js/lib/jquery-1.7.min.js")
-		script(type="text/javascript", src="/js/webchat/chat.js")
-		script
-			var userinfo = '#{userinfo}';
+		script(type="text/javascript", src="/js/lib/jquery-1.7.min.js")		
+		script(type="text/javascript", src="/js/webchat/webchat.js")
 	body
 		.chattitle
 			.chatmenubar
 				h1 Welcom to Web Chat
+				.chatmenu
+					a(href="/logout")
+						span.menu Log out 
+					span.menu Preference
+					span.menu Home
 		.chatcon
 			.msgcon
 				.msgarea
@@ -22,4 +25,4 @@ html
 				p #{userinfo.username}
 				p #{userinfo.nickname}
 		.chatfooter
-			.chatfootercon		
+			.chatfootercon

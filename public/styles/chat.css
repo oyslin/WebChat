@@ -6,6 +6,10 @@ body{
 	position: relative;
 }
 
+a{
+	text-decoration: none;
+}
+
 .chattitle{
 	background-color: #3B5998;
 	height: 82px;
@@ -16,6 +20,31 @@ body{
 .chattitle .chatmenubar{
 	width: 960px;
 	margin: 0 auto;
+}
+
+.chattitle .chatmenubar h1{
+	float: left;
+}
+
+.chattitle .chatmenubar .chatmenu{
+	float: right;
+}
+
+.chattitle .chatmenubar .chatmenu .menu{
+	float: right;
+	color: #999999;
+	margin-left: 5px;
+	background-color: #0E385F;
+	border: 1px solid #333333;
+	padding: 2px 5px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.chattitle .chatmenubar .chatmenu .menu:hover,
+.chattitle .chatmenubar .chatmenu .menu:active{
+	color: white;
+	background-color: #96A6C5;
+	border-color: #999999;
 }
 
 .chatcon{

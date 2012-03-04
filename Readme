@@ -3,7 +3,11 @@ Login Info:
 	userName
 	loginTimes
 	lastLoginTime
+	
+	
 String: For login
+	Set userid
+
     Set login:#userId:userName   userName
     Set login:#userId:password   password
     Set login:#userId:loginTimes loginTimes

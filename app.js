@@ -2,11 +2,12 @@
 var express = require('express'),
 	app = express.createServer(),
 	redis = require('redis'),
-	db = redis.createClient(),
+	redisDB = redis.createClient(),
 	util = require('util');
 	RedisStore = require('connect-redis')(express),
 	register = require('./server/register'),
 	login = require('./server/login'),
+	sockets = require('./server/sockets'),
 	io = require('socket.io').listen(app),
 	sessionStore = new RedisStore;
 
@@ -33,15 +34,17 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
-db.on("error", function (err) {
+redisDB.on("error", function (err) {
     console.log("Error " + err);
 });
 
 //router setting
 app.get('/', function(req, res){
-	req.session.username = "walt";
-	res.render('index.jade', {title: "Welcom to Web Chat"});
-	console.log('session.username = ' + req.session.username);
+	if(req.session.userinfo != null){
+		res.redirect('/chat');
+	}else{
+		res.render('index.jade', {title: "Welcom to Web Chat"});
+	}
 });
 
 app.get('/chat', function(req, res){
@@ -53,17 +56,43 @@ app.get('/chat', function(req, res){
 });
 
 app.post('/login', function(req, res){
-	console.log('db = ' + db);
-	login.login(req, res, db);
+	login.login(req, res, redisDB);
 });
 
 app.post('/register', function(req, res){	
-	register.register(req, res, db);
-})
+	register.register(req, res, redisDB);
+});
+
+app.get('/logout', function(req, res){
+	req.session.destroy(function(err){
+		if(err){
+			console.log('Destroy session error!')
+		}else{
+			res.redirect('/');
+		}
+	});
+});
 
 //socket io setting
 io.sockets.on('connection', function(socket){
-	
+	socket.on('register', function(data){
+		console.log('data = ' + data.username);
+		redisDB.get("login:" + data.username + ":userid", function(err, userid){
+			console.log('err = ' + err + ", userid = " + userid);
+			var userExists = false;
+			if(userid != null){
+				userExists = true;
+			}
+			socket.emit('register', {userExists : userExists});
+		});
+	});
+	socket.on('fetchBuddy', function(data){
+		
+	});	
+});
+
+io.of('chat').on('connection', function(socket){
+	console.log('chat connected!');
 });
 
 
